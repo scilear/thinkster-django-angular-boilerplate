@@ -11,7 +11,7 @@ router.register(r'accounts', AccountViewSet)
 urlpatterns = django.conf.urls.patterns(
      '',
     # ... URLs
-    url(r'^api/v1/', include(router.urls)),
+    django.conf.urls.url(r'^api/v1/', include(router.urls)),
 
-    url('^.*$', IndexView.as_view(), name='index'),
+    django.conf.urls.url('^.*$', IndexView.as_view(), name='index'),
 )
