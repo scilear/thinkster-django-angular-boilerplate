@@ -4,14 +4,17 @@ from rest_framework_nested import routers
 from authentication.views import AccountViewSet
 
 import django
+from django.conf.urls import include, patterns, url
+
+from views import IndexView
 
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
 
-urlpatterns = django.conf.urls.patterns(
+urlpatterns = patterns(
      '',
     # ... URLs
-    django.conf.urls.url(r'^api/v1/', include(router.urls)),
+    url(r'^api/v1/', include(router.urls)),
 
-    django.conf.urls.url('^.*$', IndexView.as_view(), name='index'),
+    url('^.*$', IndexView.as_view(), name='index'),
 )
